@@ -1905,7 +1905,7 @@ function renderMenu() {
   renderRodape();
   $('#menu').innerHTML = SECS.length
     ? SECS.map((x, i) => custTitulosHTML(x.nome, 'before', i === 0) + secHTML(x, i) + custTitulosHTML(x.nome, 'after', i === 0)).join('') + '<p class="empty" id="emptySearch" hidden>Nenhum item encontrado. Tente outra palavra.</p>'
-    : '<p class="empty">Cardápio em breve.</p>';
+    : '<p class="empty">Cardápio em breve.</p><p class="empty">DIAG cats='+CATS.length+' prods='+PRODS.length+' secs='+SECS.length+' loja='+(LOJA&&LOJA.id)+' fech='+MARCA_FECHADA+'</p>';
   requestAnimationFrame(() => ajustaGnames($('#menu')));
   requestAnimationFrame(() => observeReveals());   // cards redesenhados (ex.: fim da oferta) precisam voltar a aparecer
   $('#pills').innerHTML = SECS.map((s, i) => s.estilo === 'grade'
@@ -3167,7 +3167,7 @@ async function init() {
     await carregarDados();
   } catch (e) {
     CATS = []; PRODS = []; BYID = {};
-    $('#menu').innerHTML = '<p class="empty">Não consegui carregar o cardápio agora. Atualize a página.</p>';
+    $('#menu').innerHTML = '<p class="empty">DIAG erro: '+(e&&e.message)+'</p>';
   }
   applyVisual();
   renderTitulosTudo();

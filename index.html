@@ -1668,7 +1668,6 @@ function lerLoaderLocal() { try { return localStorage.getItem('loader_tipo') || 
 /* tipos de pedido que a loja trabalha (painel > Configurações). Sem config = todos */
 function aplicaModos() {
   const M = Object.assign({ entrega: true, retirada: true, mesa: true }, CFG.modos || {});
-  alert('DIAG modos: ' + JSON.stringify(CFG.modos) + ' | lojas CFG keys: ' + Object.keys(CFG).join(','));
   const ativos = ['entrega', 'retirada', 'mesa'].filter(k => M[k]);
   if (!ativos.length) return;
   $$('[data-mode]').forEach(b => { b.style.display = M[b.dataset.mode] ? '' : 'none'; });

@@ -2425,8 +2425,7 @@ function formOk() {
 }
 function updateFinishBtn() {
   const b = $('#btnFinish');
-  const ok = count() > 0 && formOk() && !FECHADA;
-  b.disabled = !ok;
+  b.disabled = FECHADA;   // sempre clicável; campos faltando são indicados ao clicar
   $('#btnFinishTxt').textContent = FECHADA ? 'Loja fechada agora'
     : (formOk() ? 'Enviar pedido pelo WhatsApp' : 'Preencha os dados para prosseguir');
 }
